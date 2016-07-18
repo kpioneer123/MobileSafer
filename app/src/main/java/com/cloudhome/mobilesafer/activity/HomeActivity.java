@@ -1,0 +1,112 @@
+package com.cloudhome.mobilesafer.activity;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.BaseAdapter;
+import android.widget.GridView;
+
+import com.cloudhome.mobilesafer.R;
+import com.cloudhome.mobilesafer.adapter.HomeAdapter;
+import com.google.android.gms.appindexing.Action;
+import com.google.android.gms.appindexing.AppIndex;
+import com.google.android.gms.common.api.GoogleApiClient;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * 主页面
+ * Created by xionghu on 2016/7/13.
+ * Email：965705418@qq.com
+ */
+public class HomeActivity extends Activity {
+
+
+    private GridView gv_home;
+    private HomeAdapter madapter;
+
+    private static final String names[] = {"手机防盗", "通讯卫士", "应用管理", "进程管理", "流量统计", "手机杀毒", "缓存清理", "高级工具", "设置中心"};
+    private int[] mImgs = new int[]{R.mipmap.home_icon_guard, R.mipmap.home_icon_call, R.mipmap.home_icon_apps, R.mipmap.home_icon_progress,
+            R.mipmap.home_icon_liuliang, R.mipmap.home_icon_virus,
+            R.mipmap.home_icon_clean, R.mipmap.home_icon_tools, R.mipmap.home_icon_setting
+    };
+
+    private ArrayList<HashMap<String, Object>> home_list = new ArrayList<HashMap<String, Object>>();
+    /**
+     * ATTENTION: This was auto-generated to implement the App Indexing API.
+     * See https://g.co/AppIndexing/AndroidStudio for more information.
+     */
+    private GoogleApiClient client;
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_home);
+
+
+        initView();
+        initData();
+        initEvent();
+
+
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
+    }
+
+    private void initData() {
+        for (int i = 0; i < names.length; i++) {
+            HashMap<String, Object> map = new HashMap<String, Object>();
+
+            map.put("name", names[i]);
+            map.put("img", mImgs[i]);
+
+            home_list.add(map);
+        }
+
+    }
+
+
+    private void initView() {
+
+        gv_home = (GridView) findViewById(R.id.gv_home);
+        madapter = new HomeAdapter(HomeActivity.this);
+
+
+    }
+
+    private void initEvent() {
+
+        gv_home.setAdapter(madapter);
+        madapter.setData(home_list);
+
+        gv_home.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                switch(position){
+
+                    case 8://进入设置中心
+
+                        Intent intent = new Intent(HomeActivity.this,SettingActivity.class);
+
+                                startActivity(intent);
+                        break;
+
+                    default:
+
+                        break;
+                }
+            }
+        });
+
+    }
+
+
+
+}

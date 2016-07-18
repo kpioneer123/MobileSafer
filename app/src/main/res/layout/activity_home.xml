@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.HomeActivity">
+
+
+    <TextView
+
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="#365ee2"
+        android:gravity="center"
+        android:text="功能列表"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#f1f1f1"
+        android:textSize="20sp" />
+
+    <com.cloudhome.mobilesafer.view.FocusedTextView
+        android:ellipsize="marquee"
+        android:singleLine="true"
+        android:text="最新的手机卫士快来下载，下载送大礼包！最新的手机卫士快来下载，下载送大礼包！最新的手机卫士快来下载，下载送大礼包！"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+<GridView
+
+    android:id="@+id/gv_home"
+    android:layout_marginTop="29dp"
+    android:layout_width="match_parent"
+    android:verticalSpacing="15dp"
+    android:layout_height="match_parent"
+    android:numColumns="3"
+
+    >
+
+
+</GridView>
+
+</LinearLayout>
