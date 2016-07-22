@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:siv="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <TextView
+
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="#365ee2"
+        android:gravity="center"
+        android:text="2.手机卡绑定"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#f1f1f1"
+        android:textSize="20sp" />
+
+<TextView
+        android:text="通过绑定sim卡:\n下次重启手动如果发现sim卡变化\n就会发送报警短信"
+        style="@style/text_content_style"
+        />
+
+<com.cloudhome.mobilesafer.view.SettingItemView
+    android:id="@+id/siv_bind_sim"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="20dp"
+    siv:title="点击绑定sim卡"
+    siv:update_off="sim卡没有绑定"
+    siv:update_on="sim卡已绑定"
+    >
+
+
+
+</com.cloudhome.mobilesafer.view.SettingItemView>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:gravity="center_horizontal"
+        android:layout_height="wrap_content">
+
+
+        <ImageView
+            android:src ="@mipmap/grey_dot"
+            android:layout_width="15dp"
+            android:layout_height="15dp" />
+
+
+        <ImageView
+            android:src ="@mipmap/green_dot"
+            android:layout_width="15dp"
+            android:layout_height="15dp" />
+
+        <ImageView
+            android:src ="@mipmap/grey_dot"
+            android:layout_width="15dp"
+            android:layout_height="15dp" />
+
+        <ImageView
+            android:src ="@mipmap/grey_dot"
+            android:layout_width="15dp"
+            android:layout_height="15dp" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@mipmap/sim"
+            android:id="@+id/imageView" />
+
+        <Button
+            android:layout_marginBottom="25dp"
+            android:layout_alignParentBottom="true"
+            style="@style/button_pre_style"/>
+
+        <Button
+            android:layout_marginBottom="25dp"
+            android:layout_alignParentBottom="true"
+            style="@style/button_next_style"/>
+
+
+    </RelativeLayout>
+</LinearLayout>

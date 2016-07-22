@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <TextView
+
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="#365ee2"
+        android:gravity="center"
+        android:text="1.欢迎使用手机防盗"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#f1f1f1"
+        android:textSize="20sp" />
+
+<TextView
+        android:text="您的手机防盗卫士:"
+        style="@style/text_content_style"
+        />
+
+    <TextView
+        android:text="sim卡变更报警"
+
+        style="@style/text_content_style"
+        android:drawableLeft="@mipmap/step_star"
+        />
+
+    <TextView
+        android:text="GPS追踪"
+
+        style="@style/text_content_style"
+        android:drawableLeft="@mipmap/step_star"
+
+        />
+
+
+    <TextView
+        android:text="远程数据销毁"
+
+        style="@style/text_content_style"
+        android:drawableLeft="@mipmap/step_star"
+        />
+
+
+    <TextView
+        android:text="远程锁屏"
+
+        style="@style/text_content_style"
+        android:drawableLeft="@mipmap/step_star"
+        />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:gravity="center_horizontal"
+        android:layout_height="wrap_content">
+
+
+        <ImageView
+            android:src ="@mipmap/green_dot"
+            android:layout_width="15dp"
+            android:layout_height="15dp" />
+
+
+        <ImageView
+            android:src ="@mipmap/grey_dot"
+            android:layout_width="15dp"
+            android:layout_height="15dp" />
+
+        <ImageView
+            android:src ="@mipmap/grey_dot"
+            android:layout_width="15dp"
+            android:layout_height="15dp" />
+
+        <ImageView
+            android:src ="@mipmap/grey_dot"
+            android:layout_width="15dp"
+            android:layout_height="15dp" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@mipmap/safer_lock"
+            android:id="@+id/imageView" />
+
+        <Button
+            android:layout_marginBottom="25dp"
+            android:layout_alignParentBottom="true"
+            style="@style/button_next_style"/>
+    </RelativeLayout>
+</LinearLayout>

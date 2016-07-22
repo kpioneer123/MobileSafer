@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:siv="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <TextView
+
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="#365ee2"
+        android:gravity="center"
+        android:text="3.设置安全号码"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#f1f1f1"
+        android:textSize="20sp" />
+
+<TextView
+        android:text="sim卡变更后：\n报警短信会发给安全号码"
+        style="@style/text_content_style"
+        />
+
+    <EditText
+        android:id="@+id/et_safenumber"
+        android:hint="请输入安全号码"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+
+    <Button
+        android:onClick="selectContact"
+        android:background="@color/orange2"
+        android:text="选择联系人"
+        android:textSize="18sp"
+        android:textColor="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:gravity="center_horizontal"
+        android:layout_height="wrap_content">
+
+
+        <ImageView
+            android:src ="@mipmap/grey_dot"
+            android:layout_width="15dp"
+            android:layout_height="15dp" />
+
+
+        <ImageView
+            android:src ="@mipmap/grey_dot"
+            android:layout_width="15dp"
+            android:layout_height="15dp" />
+
+        <ImageView
+            android:src ="@mipmap/green_dot"
+            android:layout_width="15dp"
+            android:layout_height="15dp" />
+
+        <ImageView
+            android:src ="@mipmap/grey_dot"
+            android:layout_width="15dp"
+            android:layout_height="15dp" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@mipmap/phone"
+            android:id="@+id/imageView" />
+
+        <Button
+
+            android:layout_marginBottom="25dp"
+            android:layout_alignParentBottom="true"
+            style="@style/button_pre_style"/>
+
+        <Button
+
+            android:layout_marginBottom="25dp"
+            android:layout_alignParentBottom="true"
+            style="@style/button_next_style"/>
+
+
+    </RelativeLayout>
+</LinearLayout>
