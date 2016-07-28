@@ -10,6 +10,14 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.BROADCAST_SMS" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/logo"
@@ -34,6 +42,10 @@
         <activity android:name=".activity.Setup3Activity"  android:screenOrientation="portrait" />
         <activity android:name=".activity.Setup4Activity"  android:screenOrientation="portrait" />
         <activity android:name=".activity.SelectContactActivity"  android:screenOrientation="portrait" />
+        <activity android:name=".activity.LockscreenActivity"  android:screenOrientation="portrait" />
+        <activity android:name=".activity.AToolsActivity"  android:screenOrientation="portrait" />
+        <activity android:name=".activity.DragViewActivity"  android:screenOrientation="portrait" />
+        <activity android:name=".activity.NumberAddressQueryActivity"  android:screenOrientation="portrait" />
         <!-- ATTENTION: This was auto-generated to add Google Play services to your project for
      App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information. -->
         <meta-data
@@ -50,6 +62,47 @@
             </intent-filter>
 
         </receiver>
+
+
+
+        <receiver android:name=".receiver.SMSReceiver">
+
+         <intent-filter  android:priority="1000">
+         <action android:name="android.provider.Telephony.SMS_RECEIVED"/>
+             <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+             <action android:name="android.provider.Telephony.SMS_RECEIVED_2"/>
+             <action android:name="android.provider.Telephony.GSM_SMS_RECEIVED"/>
+             <category android:name="android.intent.category.DEFAULT"/>
+         </intent-filter>
+
+        </receiver>
+
+
+
+<service android:name=".service.GPSService"/>
+        <service android:name=".service.AddressService"/>
+        <receiver
+            android:name=".receiver.MyAdmin"
+            android:description="@string/sample_device_admin_description"
+            android:label="@string/sample_device_admin"
+            android:permission="android.permission.BIND_DEVICE_ADMIN" >
+            <meta-data
+                android:name="android.app.device_admin"
+                android:resource="@xml/device_admin_sample" />
+
+            <intent-filter>
+                <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
+            </intent-filter>
+        </receiver>
+
+        <!--<receiver android:name=".receiver.OutCallReceiver">-->
+
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.NEW_OUTGOING_CALL"/>-->
+
+            <!--</intent-filter>-->
+
+        <!--</receiver>-->
     </application>
 
 </manifest>

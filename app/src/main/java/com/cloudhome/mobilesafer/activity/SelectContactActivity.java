@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -24,7 +26,20 @@ import java.util.Map;
  */
 public class SelectContactActivity extends Activity {
 
-    private ListView  lv_select_contact;
+    private ListView lv_select_contact;
+    private List<Map<String, String>> data;
+    private Handler handler = new Handler() {
+
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+
+            lv_select_contact.setAdapter(new SimpleAdapter(SelectContactActivity.this, data, R.layout.select_item, new String[]{"name", "number"}, new int[]{R.id.tv_name, R.id.tv_number}));
+
+        }
+
+        ;
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,9 +48,16 @@ public class SelectContactActivity extends Activity {
 
         lv_select_contact = (ListView) findViewById(R.id.lv_select_contact);
 
-        final List<Map<String,String>> data = getAllContacts();
-        
-        lv_select_contact.setAdapter(new SimpleAdapter(this,data,R.layout.select_item,new String[]{"name","number"},new int[]{R.id.tv_name,R.id.tv_number}));
+        fillData();
+
+        new Thread() {
+            public void run() {
+                data = getAllContacts();
+
+                handler.sendEmptyMessage(0);
+
+            }
+        }.start();
 
         lv_select_contact.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -44,61 +66,69 @@ public class SelectContactActivity extends Activity {
                 String number = data.get(pos).get("number");
                 //1.回传数据
                 Intent intent = new Intent();
-                intent.putExtra("number",number);
-                setResult(1,intent);
+                intent.putExtra("number", number);
+                setResult(1, intent);
 
                 finish();
             }
         });
     }
 
+    /**
+     * 加载数据
+     */
+    private void fillData() {
+
+
+    }
+
 
     /**
      * 得到手机里面所有的联系人
+     *
      * @return
      */
-    private List<Map<String,String>> getAllContacts() {
+    private List<Map<String, String>> getAllContacts() {
 
-        List<Map<String ,String >> maps = new ArrayList<Map<String, String>>();
-       ContentResolver  resolver = getContentResolver();
+        List<Map<String, String>> maps = new ArrayList<Map<String, String>>();
+        ContentResolver resolver = getContentResolver();
 
         Uri raw_contacts_uri = Uri.parse("content://com.android.contacts/raw_contacts");
         Uri data_uri = Uri.parse("content://com.android.contacts/data");
-        Cursor cursor = resolver.query(raw_contacts_uri,new String[]{"contact_id"},null,null,null);
+        Cursor cursor = resolver.query(raw_contacts_uri, new String[]{"contact_id"}, null, null, null);
 
-        while (cursor.moveToNext())
-        {
+        while (cursor.moveToNext()) {
             String contact_id = cursor.getString(0);
 
-            if(contact_id !=null)
-            {
-                Map<String,String> map = new HashMap<String,String>();
-                Cursor datacursor =        resolver.query(data_uri,new String[]{"data1","mimetype"},"raw_contact_id = ?",new String[]{contact_id},null);
+            if (contact_id != null) {
+                Map<String, String> map = new HashMap<String, String>();
+                Cursor datacursor = resolver.query(data_uri, new String[]{"data1", "mimetype"}, "raw_contact_id = ?", new String[]{contact_id}, null);
 
-                while(datacursor.moveToNext()){
-                    String data1    = datacursor.getString(0);
+                while (datacursor.moveToNext()) {
+                    String data1 = datacursor.getString(0);
                     String mimetype = datacursor.getString(1);
 
-                    if("vnd.android.cursor.item/phone_v2".equals(mimetype))
-                    {
+                    if ("vnd.android.cursor.item/phone_v2".equals(mimetype)) {
                         //电话号码
 
-                        map.put("number",data1);
+                        map.put("number", data1);
 
 
-                    }else if ("vnd.android.cursor.item/name".equals(mimetype))
-                    {
+                    } else if ("vnd.android.cursor.item/name".equals(mimetype)) {
                         //姓名
 
-                        map.put("name",data1);
+                        map.put("name", data1);
 
                     }
                 }
 
 
-
                 datacursor.close();
-                maps.add(map);
+
+                if (map.get("name") != null && map.get("number") != null) {
+                    maps.add(map);
+                }
+
 
             }
         }

@@ -30,6 +30,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 
 import okhttp3.Call;
 
@@ -60,7 +63,7 @@ public class SplashActivity extends Activity {
     private String description;
     private String apkurl;
 
-
+    private SharedPreferences sp;
     private ProgressDialog pBar;
 
    private Handler handler = new Handler(){
@@ -112,7 +115,33 @@ public class SplashActivity extends Activity {
        }
    };
 
-private SharedPreferences sp;
+
+    /**
+     * 把assets目录下的address.db拷贝到/data/data/com.cloudhome.mobilesafer/files//address.db"
+     */
+    private void copyDB(){
+
+        File file = new File(getFilesDir(),"address.db");
+
+        if (file.exists()&&file.length()>0){
+            System.out.println("数据库已经存在，不要拷贝了...");
+        }else {
+            try {
+                InputStream is = getAssets().open("address.db");
+
+                FileOutputStream fos = new FileOutputStream(file);
+                int len = 0;
+                byte buffer[] = new byte[1024];
+                while ((len = is.read(buffer)) != -1) {
+                    fos.write(buffer, 0, len);
+                }
+                is.close();
+                fos.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
     /**
      * 弹出升级对话框
      */
@@ -263,7 +292,7 @@ private SharedPreferences sp;
             }, 2000);
         }
 
-
+        copyDB();
 
         AlphaAnimation aa= new AlphaAnimation(0.1f,1.0f);
         aa.setDuration(1000);

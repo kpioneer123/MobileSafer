@@ -95,6 +95,8 @@ public class HomeActivity extends Activity {
         gv_home.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+
+                Intent intent;
                 switch(position){
 
 
@@ -104,9 +106,17 @@ public class HomeActivity extends Activity {
 
                         break;
 
+                    case 7:
+                         intent = new Intent(HomeActivity.this,AToolsActivity.class);
+
+
+                        startActivity(intent);
+
+                        break;
+
                     case 8://进入设置中心
 
-                        Intent intent = new Intent(HomeActivity.this,SettingActivity.class);
+                         intent = new Intent(HomeActivity.this,SettingActivity.class);
 
                                 startActivity(intent);
                         break;

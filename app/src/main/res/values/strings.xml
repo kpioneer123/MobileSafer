@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">MobileSafer</string>
+
+    <string name="sample_device_admin_description">设备管理员的描述信息，开启我可以一键锁屏</string>
+
+    <string name="sample_device_admin">设备管理员的标题</string>
+
+
 </resources>

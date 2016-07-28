@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 
 import com.cloudhome.mobilesafer.R;
 
@@ -13,7 +15,8 @@ import com.cloudhome.mobilesafer.R;
  */
 public class Setup4Activity extends BaseSetupActivity {
 
-    private SharedPreferences sp;
+
+    private CheckBox cb_protectting;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,8 +25,39 @@ public class Setup4Activity extends BaseSetupActivity {
         //判断是否做过设置向导，如果没有做过就跳转到设置向导页面的第一个页面，否则就加载手机防盗页面
         setContentView(R.layout.activity_setup4);
 
-        sp =getSharedPreferences("config",MODE_PRIVATE);
 
+
+        cb_protectting = (CheckBox) findViewById(R.id.cb_protectting);
+        boolean protectting =sp.getBoolean("protectting",false);
+        if(protectting)
+        {
+            //手机防盗已经开启
+            cb_protectting.setText("当前状态:手机防盗已经开启");
+
+        }else{
+
+            //手机防盗已经关闭
+            cb_protectting.setText("当前状态:手机防盗已经关闭");
+        }
+        cb_protectting.setChecked(protectting);
+        cb_protectting.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+
+                SharedPreferences.Editor editor = sp.edit();
+                editor.putBoolean("protectting",isChecked);
+                editor.commit();
+                if(isChecked)
+                {
+
+                    cb_protectting.setText("当前的状态：手机防盗已经开启");
+
+                }else{
+                    cb_protectting.setText("当前的状态：手机防盗已经关闭");
+                }
+
+            }
+        });
     }
 
     @Override

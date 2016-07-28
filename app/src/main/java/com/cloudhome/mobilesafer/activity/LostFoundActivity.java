@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.cloudhome.mobilesafer.R;
 
@@ -14,6 +16,8 @@ import com.cloudhome.mobilesafer.R;
  */
 public class LostFoundActivity extends BaseSetupActivity{
 
+    private TextView  tv_safenumber;
+    private ImageView iv_status;
 
 
     @Override
@@ -28,6 +32,26 @@ public class LostFoundActivity extends BaseSetupActivity{
         {
             //手机防盗页面
             setContentView(R.layout.activity_lost_find);
+
+            tv_safenumber = (TextView) findViewById(R.id.tv_safenumber);
+            iv_status = (ImageView) findViewById(R.id.iv_status);
+
+            tv_safenumber.setText(sp.getString("safenumber",""));
+
+            sp.getBoolean("protectting",false);
+            boolean protectting = sp.getBoolean("protectting",false);
+
+            if(protectting)
+            {
+                //防盗保护已经开启
+
+                iv_status.setImageResource(R.mipmap.lock);
+            }else{
+                //防盗保护没有开启
+
+                iv_status.setImageResource(R.mipmap.lock);
+            }
+
         }else{
 
 
