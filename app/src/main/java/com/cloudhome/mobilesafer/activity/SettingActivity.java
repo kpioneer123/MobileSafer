@@ -10,6 +10,7 @@ import android.view.View;
 
 import com.cloudhome.mobilesafer.R;
 import com.cloudhome.mobilesafer.service.AddressService;
+import com.cloudhome.mobilesafer.service.CallSmsSafeService;
 import com.cloudhome.mobilesafer.utils.ServiceStatusUtils;
 import com.cloudhome.mobilesafer.view.SettingClickView;
 import com.cloudhome.mobilesafer.view.SettingItemView;
@@ -35,6 +36,9 @@ public class SettingActivity extends Activity {
     private SettingClickView scv_changebg;
     private SettingClickView scv_changeposition;
 
+    //设置黑名单拦截
+    private SettingItemView siv_blacknumber;
+    private Intent blacknumberIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +59,8 @@ public class SettingActivity extends Activity {
     private void initView() {
         siv_update = (SettingItemView) findViewById(R.id.siv_update);
         siv_showaddress = (SettingItemView) findViewById(R.id.siv_showaddress);
+        siv_blacknumber = (SettingItemView) findViewById(R.id.siv_blacknumber);
+
 
         //设置归属地显示框的风格
         scv_changebg = (SettingClickView) findViewById(R.id.scv_changebg);
@@ -62,7 +68,7 @@ public class SettingActivity extends Activity {
         scv_changeposition= (SettingClickView) findViewById(R.id.scv_changeposition);
 
         addressIntent = new Intent(this, AddressService.class);
-        boolean addressService = ServiceStatusUtils.isRunning(this,"com.cloudhome.mobilesafer.service.AddressService");
+        boolean addressService = ServiceStatusUtils.isRunningService(this,"com.cloudhome.mobilesafer.service.AddressService");
 
         if(addressService){
             siv_showaddress.setChecked(true);
@@ -136,12 +142,15 @@ public class SettingActivity extends Activity {
                 }
             }
         });
-
+        scv_changeposition.setTitle("归属地提示框位置");
+        scv_changeposition.setDescription("设置归属地提示框显示位置");
         scv_changeposition.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 //跳转到拖动的Activity里面
+                Intent intent =new Intent(SettingActivity.this,DragViewActivity.class);
+                startActivity(intent);
 
             }
         });
@@ -179,6 +188,30 @@ public class SettingActivity extends Activity {
             }
         });
 
+
+        blacknumberIntent = new Intent(this,CallSmsSafeService.class);
+        boolean blacknumberService = ServiceStatusUtils.isRunningService(this, "com.cloudhome.mobilesafer.service.CallSmsSafeService");
+        siv_blacknumber.setChecked(blacknumberService);
+        siv_blacknumber.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                if(siv_blacknumber.isChecked()){
+                    //变为非勾选
+                    siv_blacknumber.setChecked(false);
+                    //关闭服务
+                    stopService(blacknumberIntent);
+                }else{
+                    //勾选
+                    siv_blacknumber.setChecked(true);
+                    //开启服务
+                    startService(blacknumberIntent);
+                }
+
+            }
+        });
+
+
     }
 
 
@@ -187,7 +220,7 @@ public class SettingActivity extends Activity {
         super.onResume();
 
         addressIntent = new Intent(this, AddressService.class);
-        boolean addressService = ServiceStatusUtils.isRunning(this,"com.cloudhome.mobilesafer.service.AddressService");
+        boolean addressService = ServiceStatusUtils.isRunningService(this,"com.cloudhome.mobilesafer.service.AddressService");
 
         if(addressService){
             siv_showaddress.setChecked(true);

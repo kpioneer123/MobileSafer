@@ -29,7 +29,7 @@ public class SMSReceiver extends BroadcastReceiver{
 
         sp = context.getSharedPreferences("config",Context.MODE_PRIVATE);
         dpm = (DevicePolicyManager)context.getSystemService(Context.DEVICE_POLICY_SERVICE);
-     Object[] pdus = (Object[]) intent.getExtras().get("puds");
+     Object[] pdus = (Object[]) intent.getExtras().get("pdus");
         for(Object pdu : pdus){
             SmsMessage sms = SmsMessage.createFromPdu((byte[]) pdu);
 

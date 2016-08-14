@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="#365ee2"
+        android:gravity="center"
+        android:text="程序管理"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#f1f1f1"
+        android:textSize="20sp" />
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_avail_rom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="内存可用"
+            />
+
+        <TextView
+            android:id="@+id/tv_avail_sdcard"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="sd卡可用"
+            />
+
+    </RelativeLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <ListView
+        android:id="@+id/lv_appmanger"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+<LinearLayout
+    android:id="@+id/ll_loading"
+    android:visibility="gone"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:text="正在给力加载中......"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+
+</LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_status"
+            android:text="用户程序(8)"
+            android:background="#FF888888"
+            android:textColor="#ffffff"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
+    </FrameLayout>
+</LinearLayout>

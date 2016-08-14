@@ -26,13 +26,18 @@ import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.FileCallBack;
 import com.zhy.http.okhttp.callback.StringCallback;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.json.JSONTokener;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 import okhttp3.Call;
 
@@ -360,6 +365,72 @@ public class SplashActivity extends Activity {
     }
 
 
+
+//    private void checkVersion() {
+//
+//        String url ="http://10.10.10.45:8080/index.html?";
+//                OkHttpUtils.post()
+//                .url(url)
+//                .build()
+//                .execute(new StringCallback() {
+//                    @Override
+//                    public void onError(Call call, Exception e) {
+//                        Message msg = new Message();
+//                        msg.what=NETWORK_ERROR;
+//                        handler.sendMessage(msg);
+//
+//
+//                    }
+//
+//                    @Override
+//                    public void onResponse(String response) {
+//                        Message msg = Message.obtain();
+//                        //请求网络，得到最新的版本信息
+//                        try {
+//
+//
+//                            Log.d("55555",response);
+//
+//                                JSONObject obj = new JSONObject(response);
+//
+//
+//                            JSONArray datalistArray = obj.getJSONObject("data").getJSONArray("datalist").getJSONObject(0).getJSONArray("list");
+//
+//
+//
+//                            for (int i = 0; i < datalistArray.length(); i++) {
+//                                String jsonObject2 = datalistArray.get(i).toString();
+//
+//
+//
+//                                Object json = new JSONTokener(jsonObject2).nextValue();
+//                                if(json instanceof JSONObject){
+//                                    JSONObject jsonObject = (JSONObject)json;
+//
+//                                    Log.d("object","jsonObject:"+jsonObject.toString());
+//                                }else if (json instanceof JSONArray){
+//                                    JSONArray jsonArray = (JSONArray)json;
+//                                    Log.d("object","jjsonArray:"+jsonArray.toString());
+//                                }
+//
+//
+//                            }
+//
+//
+//
+//                        }catch (JSONException e) {
+//                            e.printStackTrace();
+//                            msg.what = JSON_ERROR;
+//                        }finally {
+//                            handler.sendMessage(msg);
+//                        }
+//
+//
+//                    }
+//                });
+//
+//
+//    }
     /**
      * 得到版本名称
      *

@@ -72,7 +72,7 @@ public class HomeAdapter extends BaseAdapter {
         return convertView;
     }
 
-    class ViewHolder {
+    static class ViewHolder {
 
         TextView   tv_name;
         ImageView iv_icon;

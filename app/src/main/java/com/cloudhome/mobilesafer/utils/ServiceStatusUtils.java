@@ -20,7 +20,7 @@ public class ServiceStatusUtils {
      */
 
 
-    public static  boolean isRunning(Context context ,String serviceName ){
+    public static  boolean isRunningService(Context context ,String serviceName ){
 
         //ActivityManager
         ActivityManager am = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="#365ee2"
+        android:gravity="center"
+        android:text="进程管理"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#f1f1f1"
+        android:textSize="20sp" />
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/tv_run_process_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="运行中进程:" />
+
+        <TextView
+            android:id="@+id/tv_avail_ram"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="剩余/总内存:" />
+    </RelativeLayout>
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1" >
+
+        <ListView
+            android:id="@+id/lv_taskmanager"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" >
+        </ListView>
+
+        <LinearLayout
+            android:id="@+id/ll_loading"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone" >
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="正在给力加载中...." />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_status"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="#FF888888"
+            android:text="用户进程(8)"
+            android:textColor="#ffffff" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <Button
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/button_other"
+            android:onClick="selectAll"
+            android:text="全选"
+            android:textSize="14sp" />
+
+        <Button
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/button_other"
+            android:onClick="unSelect"
+            android:text="反选"
+            android:textSize="14sp" />
+
+        <Button
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/button_other"
+            android:onClick="killAll"
+            android:text="一键清理"
+            android:textSize="14sp" />
+
+        <Button
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/button_other"
+            android:onClick="reEnterSetting"
+            android:text="设置"
+            android:textSize="14sp" />
+
+</LinearLayout>
+
+</LinearLayout>

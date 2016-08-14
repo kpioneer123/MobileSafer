@@ -29,4 +29,17 @@
         android:textSize="18sp"
         />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:clickable="true"
+        android:drawableLeft="@android:drawable/ic_menu_camera"
+        android:gravity="center_vertical"
+        android:onClick="smsBackup"
+        android:text="短信备份"
+        android:textColor="#333333"
+        android:textSize="18sp"
+        />
 </LinearLayout>

@@ -53,6 +53,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         />
+    <com.cloudhome.mobilesafer.view.SettingItemView
+        android:id="@+id/siv_blacknumber"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        siv:title = "设置黑名单拦截"
+        siv:update_off = "黑名单拦截已经关闭"
+        siv:update_on  = "黑名单拦截已经开启"
+
+        />
 
 
 </LinearLayout>
