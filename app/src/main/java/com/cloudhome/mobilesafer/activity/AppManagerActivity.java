@@ -41,9 +41,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ *
+ * 你好我喜欢你，你觉得怎么样
+ *
  * Created by xionghu on 2016/8/8.
  * Email：965705418@qq.com
  */
+
+
 public class AppManagerActivity extends Activity implements View.OnClickListener {
 
     private TextView tv_avail_rom;
