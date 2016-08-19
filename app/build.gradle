@@ -10,6 +10,7 @@ android {
         targetSdkVersion 20
         versionCode 1
         versionName "1.0"
+
     }
     buildTypes {
         release {
@@ -17,11 +18,20 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    //ADD THESE LINES:
+    packagingOptions {
+        exclude 'LICENSE.txt'
+    }
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
 }
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
+
     compile 'com.android.support:appcompat-v7:24.0.0'
     compile project(':okhttputils')
     compile 'com.google.android.gms:play-services-appindexing:8.1.0'

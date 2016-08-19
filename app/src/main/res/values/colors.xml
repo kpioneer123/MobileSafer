@@ -9,4 +9,10 @@
     <color name="orange2">#ea8010</color>
     <color name="button_bg_color">#33333333</color>
     <color name="bg">#f1f1f1</color>
+
+
+    <color name="textColorPrimary">#ffffffff</color>
+    <color name="textColorPrimaryDark">#ff000000</color>
+
+
 </resources>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
+    android:minWidth="294dp"
+    android:minHeight="72dp"
+    android:updatePeriodMillis="1"
+    android:initialLayout="@layout/mywidget"
+
+    >
+
+
+</appwidget-provider>
+
+
+     <!--手机锁屏时显示-->
+    <!--android:widgetCategory="home_screen|keyguard"-->
+    <!--android:initialKeyguardLayout=""-->
