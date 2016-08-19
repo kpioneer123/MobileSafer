@@ -31,6 +31,7 @@ public class KillProcessService extends Service {
         return null;
     }
 
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -44,6 +45,9 @@ public class KillProcessService extends Service {
 
             }
         };
+        /**
+         *从两秒钟开始 4s 钟轮询一次
+         */
         timer.schedule(task, 2000, 4000);
         //监听锁屏事件
         receiver = new ScreenReceiver();

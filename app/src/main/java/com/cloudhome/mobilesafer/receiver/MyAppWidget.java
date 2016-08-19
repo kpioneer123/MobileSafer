@@ -62,7 +62,7 @@ public class MyAppWidget extends AppWidgetProvider {
 		context.stopService(intent);
 		super.onDisabled(context);
 	}
-	
-	
+
+
 
 }
