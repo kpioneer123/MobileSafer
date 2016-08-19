@@ -20,6 +20,9 @@ import com.cloudhome.mobilesafer.receiver.MyAppWidget;
 import com.cloudhome.mobilesafer.utils.SystemInfoUtils;
 
 
+/**
+ * 在服务中把widget更新
+ */
 public class UpdateAppWidgetService extends Service {
 
 	private AppWidgetManager awm;
@@ -57,7 +60,8 @@ public class UpdateAppWidgetService extends Service {
 			public void run() {
 
 				System.out.println("开始耗电了....");
-				// 激活的组件-通讯
+
+				// 激活的组件-通讯 打开MyAppWidget.class
 				ComponentName provider = new ComponentName(
 						UpdateAppWidgetService.this, MyAppWidget.class);
 				// 远程View

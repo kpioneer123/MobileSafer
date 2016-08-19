@@ -109,7 +109,7 @@
         </receiver>
         <receiver android:name="com.cloudhome.mobilesafer.receiver.KillProcessReceiver" >
             <intent-filter>
-                <action android:name="com.itheima.mobilesafe.killprocess" />
+                <action android:name="com.cloudhome.mobilesafer.service..killprocess" />
             </intent-filter>
         </receiver>
 
@@ -132,6 +132,7 @@
 
         <service android:name=".service.CallSmsSafeService"/>
         <service android:name=".service.KillProcessService"/>
+        <service android:name=".service.UpdateAppWidgetService"/>
         <!--<receiver android:name=".receiver.OutCallReceiver">-->
 
             <!--<intent-filter>-->

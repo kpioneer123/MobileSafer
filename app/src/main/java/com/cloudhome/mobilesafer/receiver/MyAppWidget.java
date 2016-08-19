@@ -11,9 +11,8 @@ import android.os.Bundle;
 import com.cloudhome.mobilesafer.service.UpdateAppWidgetService;
 
 /**
- * ����Ĺ㲥������
- * @author Administrator
- *
+ * Created by xionghu on 2016/8/19.
+ * Email：965705418@qq.com
  */
 public class MyAppWidget extends AppWidgetProvider {
 
