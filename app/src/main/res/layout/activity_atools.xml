@@ -42,4 +42,18 @@
         android:textColor="#333333"
         android:textSize="18sp"
         />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dip"
+        android:layout_marginTop="10dip"
+        android:clickable="true"
+        android:drawableLeft="@android:drawable/ic_menu_camera"
+        android:gravity="center_vertical"
+        android:onClick="commonNumberQuery"
+        android:text="常用号码查询"
+        android:textColor="#333333"
+        android:textSize="18sp" />
+
 </LinearLayout>

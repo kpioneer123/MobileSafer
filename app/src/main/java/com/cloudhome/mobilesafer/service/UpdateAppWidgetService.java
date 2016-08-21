@@ -24,11 +24,10 @@ import com.cloudhome.mobilesafer.utils.SystemInfoUtils;
  * 在服务中把widget更新
  */
 public class UpdateAppWidgetService extends Service {
-
 	private AppWidgetManager awm;
-
 	private Timer timer;// 定时器
 	private TimerTask task;
+	//锁屏receiver
 	private ScreenReceiver receiver;
 
 	@Override
@@ -82,7 +81,7 @@ public class UpdateAppWidgetService extends Service {
 												.getAvailRam(UpdateAppWidgetService.this)));
 				// 动作
 				Intent intent = new Intent();
-				intent.setAction("com.cloudhome.mobilesafer.service.killprocess");
+				intent.setAction("com.cloudhome.mobilesafer.killprocess");
 				// 延期意图
 				PendingIntent pendingIntent = PendingIntent.getBroadcast(
 						UpdateAppWidgetService.this, 0, intent,

@@ -75,4 +75,9 @@ public class AToolsActivity extends Activity {
         }
     }
 
+    public void commonNumberQuery(View view)
+    {
+        Intent intent = new Intent(this,CommonNumberQueryActivity.class);
+        startActivity(intent);
+    }
 }

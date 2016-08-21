@@ -46,7 +46,15 @@
         <activity android:name=".activity.AToolsActivity"  android:screenOrientation="portrait" />
         <activity android:name=".activity.AppManagerActivity"  android:screenOrientation="portrait" />
         <activity android:name=".activity.CallSmsSafeActivity"  android:screenOrientation="portrait" />
-        <activity android:name=".activity.HomeActivity"    android:screenOrientation="portrait" />
+        <activity android:name=".activity.HomeActivity"    android:screenOrientation="portrait" >
+
+        <intent-filter>
+            <action android:name="com.cloudhome.mobilesafer.activity.HomeActivity" />
+
+            <category android:name="android.intent.category.DEFAULT" />
+        </intent-filter>
+        </activity>
+
         <activity android:name=".activity.NumberAddressQueryActivity"  android:screenOrientation="portrait" />
         <activity android:name=".activity.LostFoundActivity"  android:screenOrientation="portrait" />
         <activity android:name=".activity.DragViewActivity"  android:screenOrientation="portrait" />
@@ -59,7 +67,7 @@
         <activity android:name=".activity.LockscreenActivity"  android:screenOrientation="portrait" />
         <activity android:name=".activity.TaskManagerActivity"  android:screenOrientation="portrait" />
         <activity android:name=".activity.TaskManagerSettingActivity"  android:screenOrientation="portrait" />
-
+        <activity android:name=".activity.CommonNumberQueryActivity"  android:screenOrientation="portrait" />
 
         <!-- ATTENTION: This was auto-generated to add Google Play services to your project for
      App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information. -->
@@ -103,7 +111,7 @@
         </receiver>
         <receiver android:name="com.cloudhome.mobilesafer.receiver.KillProcessReceiver" >
             <intent-filter>
-                <action android:name="com.cloudhome.mobilesafer.service..killprocess" />
+                <action android:name="com.cloudhome.mobilesafer.killprocess" />
             </intent-filter>
         </receiver>
 

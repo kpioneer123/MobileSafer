@@ -9,6 +9,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -120,19 +122,51 @@ public class SplashActivity extends Activity {
        }
    };
 
+    //创建快捷键
+    private void createShortcut(){
+        if(sp.getBoolean("installshortcut",false))
+        {
+         return;
+        }
+
+        Intent intent = new Intent();
+        //动作
+        intent.setAction("com.android.launcher.action.INSTALL_SHORTCUT");
+        //名称
+        intent.putExtra(Intent.EXTRA_SHORTCUT_NAME,"安全卫士");
+        //图片
+        intent.putExtra(Intent.EXTRA_SHORTCUT_ICON, BitmapFactory.decodeResource(getResources(),R.mipmap.logo));
+
+
+        //点击我的时候要我干什么-一键报警
+        Intent callIntent =new Intent();
+        //直接进入主页面
+        callIntent.setAction("com.cloudhome.mobilesafer.activity.HomeActivity");
+
+        intent.putExtra(Intent.EXTRA_SHORTCUT_INTENT,callIntent);
+
+        sendBroadcast(intent);
+
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putBoolean("installshortcut",true);
+        editor.commit();
+
+        Log.d("5555","66666");
+
+    }
 
     /**
      * 把assets目录下的address.db拷贝到/data/data/com.cloudhome.mobilesafer/files//address.db"
      */
-    private void copyDB(){
+    private void copyDB(String dbName){
 
-        File file = new File(getFilesDir(),"address.db");
+        File file = new File(getFilesDir(),dbName);
 
         if (file.exists()&&file.length()>0){
             System.out.println("数据库已经存在，不要拷贝了...");
         }else {
             try {
-                InputStream is = getAssets().open("address.db");
+                InputStream is = getAssets().open(dbName);
 
                 FileOutputStream fos = new FileOutputStream(file);
                 int len = 0;
@@ -147,6 +181,8 @@ public class SplashActivity extends Activity {
             }
         }
     }
+
+
     /**
      * 弹出升级对话框
      */
@@ -297,12 +333,16 @@ public class SplashActivity extends Activity {
             }, 2000);
         }
 
-        copyDB();
+        createShortcut();
+        copyDB("address.db");
+        copyDB("commonnum.db");
+
 
         AlphaAnimation aa= new AlphaAnimation(0.1f,1.0f);
         aa.setDuration(1000);
         findViewById(R.id.rl_splash_root).startAnimation(aa);
     }
+
 
     /**
      * 校验是否有新版本，如果有就升级
